@@ -20,11 +20,15 @@ const ReceiveBook = () => {
     let studentFound = false;
     let currentBorrowedBook = "";
     let currentBorrowerStudent = "";
+    let borrowed = true;
     bookList = bookList.map((book) => {
       if (book.id === newBookID) {
         currentBorrowedBook = book.title;
         bookFound = true;
-        return { ...book, isAvailable: true };
+        if (book.isAvailable) {
+          borrowed = false;
+          return book;
+        } else return { ...book, isAvailable: true };
       }
       return book;
     });
@@ -43,7 +47,9 @@ const ReceiveBook = () => {
       return student;
     });
     let alertMsg = "";
-    if (bookFound && studentFound) {
+    if (!borrowed) {
+      alertMsg = `${currentBorrowedBook} can not be returned (Not Borrowed by anyone)`;
+    } else if (bookFound && studentFound) {
       updateBooks(bookList);
       updateStudents(studentList);
       alertMsg = `${currentBorrowedBook} received from ${currentBorrowerStudent}`;

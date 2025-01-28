@@ -20,16 +20,23 @@ const IssueBook = () => {
     let studentFound = false;
     let currentBorrowedBook = "";
     let currentBorrowerStudent = "";
+    let alertMsg = "";
+    let taken = false;
     bookList = bookList.map((book) => {
-      if (book.id === id.current.value) {
+      if (book.id === newBookID) {
         currentBorrowedBook = book.title;
         bookFound = true;
-        return { ...book, isAvailable: false };
+        if (!book.isAvailable) {
+          taken = true;
+          return book;
+        } else {
+          return { ...book, isAvailable: false };
+        }
       }
       return book;
     });
     studentList = studentList.map((student) => {
-      if (student.sid === sid.current.value) {
+      if (student.sid === newStudentID) {
         currentBorrowerStudent = student.name;
         studentFound = true;
         return {
@@ -39,8 +46,9 @@ const IssueBook = () => {
       }
       return student;
     });
-    let alertMsg = "";
-    if (bookFound && studentFound) {
+    if (taken) {
+      alertMsg = `${currentBorrowedBook} is not available at the moment`;
+    } else if (bookFound && studentFound) {
       updateBooks(bookList);
       updateStudents(studentList);
       alertMsg = `${currentBorrowedBook} issued to ${currentBorrowerStudent}`;
