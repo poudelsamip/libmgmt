@@ -19,6 +19,7 @@ const IssueBook = () => {
     let bookFound = false;
     let studentFound = false;
     let currentBorrowedBook = "";
+    let currentBorrowerStudent = "";
     bookList = bookList.map((book) => {
       if (book.id === id.current.value) {
         currentBorrowedBook = book.title;
@@ -29,6 +30,7 @@ const IssueBook = () => {
     });
     studentList = studentList.map((student) => {
       if (student.sid === sid.current.value) {
+        currentBorrowerStudent = student.name;
         studentFound = true;
         return {
           ...student,
@@ -41,6 +43,7 @@ const IssueBook = () => {
     if (bookFound && studentFound) {
       updateBooks(bookList);
       updateStudents(studentList);
+      alertMsg = `${currentBorrowedBook} issued to ${currentBorrowerStudent}`;
     } else if (!bookFound && !studentFound) {
       alertMsg = `Book id: ${newBookID} and Student id: ${newStudentID} do not exit in the database`;
     } else if (!bookFound) {
