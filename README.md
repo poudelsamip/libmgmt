@@ -1,8 +1,3 @@
-# React + Vite
+# Welcome to React JS Project - My Library !
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a simple Frontend Project - **My Library** using React JS. Currently there is no connection to database but the data is saved locally in the browser. Users can ADD students, ADD books, ISSUE books to students and RECEIVE books from students.
