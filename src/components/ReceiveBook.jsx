@@ -1,28 +1,39 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { BookList, StudentList } from "../store/provider";
+import IssueToast from "./IssueToast";
 
 const ReceiveBook = () => {
   const id = useRef();
   const sid = useRef();
+
+  const [toastVisible, setToastVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   let { bookList, updateBooks } = useContext(BookList);
   let { studentList, updateStudents } = useContext(StudentList);
 
   const handleIssueBtn = (e) => {
     e.preventDefault();
-    let currentBook = "";
+    let newBookID = id.current.value;
+    let newStudentID = sid.current.value;
+    let bookFound = false;
+    let studentFound = false;
+    let currentBorrowedBook = "";
+    let currentBorrowerStudent = "";
     bookList = bookList.map((book) => {
-      if (book.id === id.current.value) {
-        currentBook = book.title;
+      if (book.id === newBookID) {
+        currentBorrowedBook = book.title;
+        bookFound = true;
         return { ...book, isAvailable: true };
       }
       return book;
     });
-    updateBooks(bookList);
     studentList = studentList.map((student) => {
-      if (student.sid === sid.current.value) {
+      if (student.sid === newStudentID) {
+        studentFound = true;
+        currentBorrowerStudent = student.name;
         let newBorrowedBooksList = student.borrowedBook.filter(
-          (book) => book !== currentBook
+          (book) => book !== currentBorrowedBook
         );
         return {
           ...student,
@@ -31,9 +42,23 @@ const ReceiveBook = () => {
       }
       return student;
     });
-    updateStudents(studentList);
+    let alertMsg = "";
+    if (bookFound && studentFound) {
+      updateBooks(bookList);
+      updateStudents(studentList);
+      alertMsg = `${currentBorrowedBook} received from ${currentBorrowerStudent}`;
+    } else if (!bookFound && !studentFound) {
+      alertMsg = `Book id: ${newBookID} and Student id: ${newStudentID} do not exit in the database`;
+    } else if (!bookFound) {
+      alertMsg = `Book id: ${newBookID} does not exist in the database`;
+    } else {
+      alertMsg = `Student id: ${newStudentID} does not exist in the database`;
+    }
     id.current.value = "";
     sid.current.value = "";
+
+    setAlertMessage(alertMsg);
+    setToastVisible(true);
   };
 
   return (
@@ -79,6 +104,14 @@ const ReceiveBook = () => {
             </div>
           </form>
         </div>
+        {toastVisible && (
+          <div className="toast-container position-fixed top-0 end-0 p-3">
+            <IssueToast
+              message={alertMessage}
+              setToastVisible={setToastVisible}
+            />
+          </div>
+        )}
       </div>
     </>
   );
