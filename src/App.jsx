@@ -8,6 +8,7 @@ import AllStudents from "./components/AllStudents";
 import IssueBook from "./components/IssueBook";
 import { useState } from "react";
 import ReceiveBook from "./components/ReceiveBook";
+import IssueToast from "./components/IssueToast";
 
 function App() {
   const [currentTab, setCurrentTab] = useState("Dashboard");
@@ -18,6 +19,11 @@ function App() {
         <div className="content">
           {currentTab === "Dashboard" && (
             <div>
+              {/* <IssueToast
+                message={"This is test message"}
+                onClose={() => console.log("Closed clicked")}
+              /> */}
+
               <center>
                 <h1 style={{ fontFamily: "Poppins", marginTop: "250px" }}>
                   Library Management System
