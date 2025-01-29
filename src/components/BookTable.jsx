@@ -2,8 +2,15 @@ import { useContext } from "react";
 import Book from "./Book";
 import { BookList } from "../store/provider";
 
-const BookTable = () => {
+const BookTable = ({ searchValue }) => {
   const { bookList } = useContext(BookList);
+
+  const filteredBookList = searchValue
+    ? bookList.filter((book) =>
+        book.title.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    : bookList;
+
   return (
     <table className="table table-striped">
       <thead>
@@ -15,7 +22,7 @@ const BookTable = () => {
         </tr>
       </thead>
       <tbody>
-        {bookList.map((book) => (
+        {filteredBookList.map((book) => (
           <Book key={book.id} book={book} />
         ))}
       </tbody>

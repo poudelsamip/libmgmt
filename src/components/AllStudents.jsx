@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { StudentList } from "../store/provider";
-import Student from "./Student";
 import NewStudent from "./NewStudent";
 import Empty from "./Empty";
 import StudentTable from "./StudentTable";
@@ -8,6 +7,12 @@ import StudentTable from "./StudentTable";
 const AllStudents = () => {
   const { studentList } = useContext(StudentList);
   const [popup, setPopup] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  const onChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   const handleAddBtn = () => {
     setPopup(!popup);
   };
@@ -20,6 +25,15 @@ const AllStudents = () => {
             <h2>Students List</h2>
           </center>
           <div className="buttonContainer">
+            {studentList.length !== 0 && (
+              <input
+                type="search"
+                value={searchValue}
+                onChange={onChange}
+                placeholder="Search Student"
+                style={{ height: "90%" }}
+              />
+            )}
             <button
               id="addToTable"
               className="btn btn-primary"
@@ -29,7 +43,9 @@ const AllStudents = () => {
             </button>
           </div>
           {studentList.length === 0 && <Empty name={"Student"} />}
-          {studentList.length !== 0 && <StudentTable />}
+          {studentList.length !== 0 && (
+            <StudentTable searchValue={searchValue} />
+          )}
         </div>
       )}
     </>

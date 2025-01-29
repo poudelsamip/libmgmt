@@ -2,8 +2,14 @@ import { useContext } from "react";
 import Student from "./Student";
 import { StudentList } from "../store/provider";
 
-const StudentTable = () => {
+const StudentTable = ({ searchValue }) => {
   const { studentList } = useContext(StudentList);
+  const filteredStudentList = searchValue
+    ? studentList.filter((student) =>
+        student.name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    : studentList;
+
   return (
     <table className="table table-striped">
       <thead>
@@ -15,7 +21,7 @@ const StudentTable = () => {
         </tr>
       </thead>
       <tbody>
-        {studentList.map((student) => (
+        {filteredStudentList.map((student) => (
           <Student key={student.sid} student={student} />
         ))}
       </tbody>
