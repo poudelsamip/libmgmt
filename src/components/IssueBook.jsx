@@ -74,19 +74,6 @@ const IssueBook = () => {
           <form>
             <div className="form-container">
               <div className="mb-3">
-                <label htmlFor="bookID" className="form-label">
-                  Book ID:
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="bookID"
-                  placeholder="Enter Book ID"
-                  ref={id}
-                />
-              </div>
-
-              <div className="mb-3">
                 <label htmlFor="student" className="form-label">
                   Student ID:
                 </label>
@@ -96,6 +83,19 @@ const IssueBook = () => {
                   id="student"
                   placeholder="Enter Students Name"
                   ref={sid}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="bookID" className="form-label">
+                  Book ID:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="bookID"
+                  placeholder="Enter Book ID"
+                  ref={id}
                 />
               </div>
 
