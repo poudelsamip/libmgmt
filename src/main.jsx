@@ -11,11 +11,11 @@ import Footer from "./components/Footer.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/mylibrary",
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "/mylibrary",
         element: (
           <div className="heroSection">
             <center>
@@ -25,10 +25,10 @@ const router = createBrowserRouter([
           </div>
         ),
       },
-      { path: "/allbooks", element: <AllBooks /> },
-      { path: "/allstudents", element: <AllStudents /> },
-      { path: "/issuebook", element: <IssueBook /> },
-      { path: "/receivebook", element: <ReceiveBook /> },
+      { path: "/mylibrary/allbooks", element: <AllBooks /> },
+      { path: "/mylibrary/allstudents", element: <AllStudents /> },
+      { path: "/mylibrary/issuebook", element: <IssueBook /> },
+      { path: "/mylibrary/receivebook", element: <ReceiveBook /> },
     ],
   },
   {

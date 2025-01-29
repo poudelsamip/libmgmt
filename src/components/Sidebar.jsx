@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -6,21 +6,18 @@ const Sidebar = () => {
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
       style={{ width: "250px", height: "100vh" }}
     >
-      <a
-        href="/"
-        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+      <Link
+        to="/mylibrary"
+        className="mainName d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
-        <svg className="bi pe-none me-2" width="40" height="32">
-          <use xlinkHref="#bootstrap"></use>
-        </svg>
-        <span className="fs-4">My Library</span>
-      </a>
+        <h2>My Library</h2>
+      </Link>
       <hr />
 
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item">
           <NavLink
-            to="/"
+            to="/mylibrary"
             end
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? "active" : ""}`
@@ -35,7 +32,7 @@ const Sidebar = () => {
 
         <li>
           <NavLink
-            to="/allbooks"
+            to="/mylibrary/allbooks"
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? "active" : ""}`
             }
@@ -49,7 +46,7 @@ const Sidebar = () => {
 
         <li>
           <NavLink
-            to="/allstudents"
+            to="/mylibrary/allstudents"
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? "active" : ""}`
             }
@@ -63,7 +60,7 @@ const Sidebar = () => {
 
         <li>
           <NavLink
-            to="/issuebook"
+            to="/mylibrary/issuebook"
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? "active" : ""}`
             }
@@ -77,7 +74,7 @@ const Sidebar = () => {
 
         <li>
           <NavLink
-            to="/receivebook"
+            to="/mylibrary/receivebook"
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? "active" : ""}`
             }

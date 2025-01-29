@@ -5,6 +5,9 @@
   width: 100%;
   display: flex;
 }
+.mainName {
+  width: 100%;
+}
 .content {
   width: 100%;
 }
@@ -12,7 +15,6 @@
   width: 500px;
   margin: 50px;
 }
-
 .forBorder {
   padding: 10px;
   height: 100vh;
