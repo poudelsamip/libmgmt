@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Sidebar = ({ currentTab, setCurrentTab }) => {
   return (
     <>
@@ -18,8 +20,8 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
 
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item" onClick={() => setCurrentTab("Dashboard")}>
-            <a
-              href="#"
+            <Link
+              to="/mylibrary"
               className={`nav-link text-white ${
                 currentTab === "Dashboard" && "active"
               }`}
@@ -29,12 +31,12 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
                 <use xlinkHref="#home"></use>
               </svg>
               Dashboard
-            </a>
+            </Link>
           </li>
 
           <li onClick={() => setCurrentTab("ViewBooks")}>
-            <a
-              href="#"
+            <Link
+              to="/mylibrary/allbooks"
               className={`nav-link text-white ${
                 currentTab === "ViewBooks" && "active"
               }`}
@@ -43,12 +45,12 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
                 <use xlinkHref="#speedometer2"></use>
               </svg>
               View All Books
-            </a>
+            </Link>
           </li>
 
           <li onClick={() => setCurrentTab("ViewStudents")}>
-            <a
-              href="#"
+            <Link
+              to="/mylibrary/allstudents"
               className={`nav-link text-white ${
                 currentTab === "ViewStudents" && "active"
               }`}
@@ -57,12 +59,12 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
                 <use xlinkHref="#table"></use>
               </svg>
               View All Students
-            </a>
+            </Link>
           </li>
 
           <li onClick={() => setCurrentTab("IssueBook")}>
-            <a
-              href="#"
+            <Link
+              to="/mylibrary/issuebook"
               className={`nav-link text-white ${
                 currentTab === "IssueBook" && "active"
               }`}
@@ -71,12 +73,12 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
                 <use xlinkHref="#grid"></use>
               </svg>
               Issue Book
-            </a>
+            </Link>
           </li>
 
           <li onClick={() => setCurrentTab("ReceiveBook")}>
-            <a
-              href="#"
+            <Link
+              to="/mylibrary/receivebook"
               className={`nav-link text-white ${
                 currentTab === "ReceiveBook" && "active"
               }`}
@@ -85,7 +87,7 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
                 <use xlinkHref="#grid"></use>
               </svg>
               Receive Book
-            </a>
+            </Link>
           </li>
         </ul>
 

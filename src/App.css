@@ -36,6 +36,13 @@
   border: 2px solid black;
   box-shadow: 1px 1px 5px black;
 }
+.heroSection {
+  font-family: "Poppins";
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 thead {
   position: sticky;
   top: -10px;
@@ -53,7 +60,7 @@ thead {
   right: 10px;
 }
 .emptyContainer {
-  font-family: "Jetbrains Mono";
+  font-family: "consolas";
   height: 300px;
   display: flex;
   justify-content: center;
