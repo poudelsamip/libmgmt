@@ -38,7 +38,7 @@
 }
 thead {
   position: sticky;
-  top: 0;
+  top: -10px;
 }
 .buttonContainer {
   width: 100%;
