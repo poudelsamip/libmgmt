@@ -15,7 +15,8 @@
 
 .forBorder {
   padding: 10px;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
   border: 2px solid black;
   box-shadow: 1px 1px 5px black;
   font-family: "Poppins";
@@ -34,6 +35,10 @@
   width: 500px;
   border: 2px solid black;
   box-shadow: 1px 1px 5px black;
+}
+thead {
+  position: sticky;
+  top: 0;
 }
 .buttonContainer {
   width: 100%;
