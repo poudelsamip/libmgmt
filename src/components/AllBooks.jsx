@@ -28,6 +28,7 @@ const AllBooks = () => {
             {bookList.length !== 0 && (
               <input
                 type="search"
+                className="searchBox"
                 value={searchValue}
                 onChange={onChange}
                 placeholder="Search Book"
