@@ -1,6 +1,8 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/authentication";
 import { auth } from "../firebase";
+import { GrLogout } from "react-icons/gr";
+import { IoLibrary } from "react-icons/io5";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -9,7 +11,7 @@ const Sidebar = () => {
     await logOut();
     navigate("/mylibrary/login");
   };
-
+  let user = localStorage.getItem("user");
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
@@ -19,14 +21,15 @@ const Sidebar = () => {
         to="/mylibrary"
         className="mainName d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
-        <h2 className="newFont">My Library</h2>
+        <IoLibrary size={35} />
+        <h2 className="newFont mb-0 mx-2">My Library</h2>
       </Link>
       <hr />
 
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item">
           <NavLink
-            to="/mylibrary"
+            to="/mylibrary/dashboard"
             end
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? "active" : ""}`
@@ -100,7 +103,8 @@ const Sidebar = () => {
 
       <span className="emailtext mb-1">{auth.currentUser.email}</span>
       <button className="btn btn-secondary" onClick={handleLogOut}>
-        Log Out
+        {"Log Out   "}
+        <GrLogout />
       </button>
     </div>
   );

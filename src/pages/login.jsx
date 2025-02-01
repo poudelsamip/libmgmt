@@ -17,7 +17,7 @@ const Login = () => {
     passwordVal.current.value = "";
     try {
       await logIn(email, password);
-      navigate("/mylibrary/");
+      navigate("/mylibrary/dashboard");
     } catch (err) {
       console.log(err);
     }

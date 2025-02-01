@@ -2,8 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import MainProvider from "./store/provider";
-import AuthProvider from "./store/authentication";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 function App() {

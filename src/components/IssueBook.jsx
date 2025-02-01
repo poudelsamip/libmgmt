@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { BookList, StudentList } from "../store/Provider";
+import { BookList, StudentList } from "../store/provider";
 import IssueToast from "./IssueToast";
 
 const IssueBook = () => {
