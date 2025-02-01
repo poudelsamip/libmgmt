@@ -12,8 +12,6 @@ import Login from "./pages/login.jsx";
 import SignUp from "./pages/signup.jsx";
 
 const router = createBrowserRouter([
-  { path: "/mylibrary/login", element: <Login /> },
-  { path: "/mylibrary/signup", element: <SignUp /> },
   {
     path: "/mylibrary",
     element: <App />,
@@ -35,6 +33,8 @@ const router = createBrowserRouter([
       { path: "/mylibrary/receivebook", element: <ReceiveBook /> },
     ],
   },
+  { path: "/mylibrary/login", element: <Login /> },
+  { path: "/mylibrary/signup", element: <SignUp /> },
   {
     path: "*",
     element: (
