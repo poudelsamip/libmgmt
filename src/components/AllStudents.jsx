@@ -32,7 +32,6 @@ const AllStudents = () => {
                 value={searchValue}
                 onChange={onChange}
                 placeholder="Search Student"
-                style={{ height: "90%" }}
               />
             )}
             <button
@@ -40,7 +39,7 @@ const AllStudents = () => {
               className="btn btn-primary"
               onClick={handleAddBtn}
             >
-              Add new student
+              Add Student
             </button>
           </div>
           {studentList.length === 0 && <Empty name={"Student"} />}

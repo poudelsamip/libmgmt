@@ -5,9 +5,7 @@
   width: 100%;
   display: flex;
 }
-.mainName {
-  width: 100%;
-}
+.mainName,
 .content {
   width: 100%;
 }

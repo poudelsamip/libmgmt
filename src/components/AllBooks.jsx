@@ -32,7 +32,6 @@ const AllBooks = () => {
                 value={searchValue}
                 onChange={onChange}
                 placeholder="Search Book"
-                style={{ height: "90%" }}
               />
             )}
             <button
@@ -40,7 +39,7 @@ const AllBooks = () => {
               className="btn btn-primary"
               onClick={handleClick}
             >
-              Add new book
+              Add Book
             </button>
           </div>
           {bookList.length === 0 && <Empty name={"Book"} />}

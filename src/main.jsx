@@ -8,8 +8,12 @@ import AllBooks from "./components/AllBooks.jsx";
 import IssueBook from "./components/IssueBook.jsx";
 import ReceiveBook from "./components/ReceiveBook.jsx";
 import Footer from "./components/Footer.jsx";
+import Login from "./pages/login.jsx";
+import SignUp from "./pages/signup.jsx";
 
 const router = createBrowserRouter([
+  { path: "/mylibrary/login", element: <Login /> },
+  { path: "/mylibrary/signup", element: <SignUp /> },
   {
     path: "/mylibrary",
     element: <App />,
