@@ -10,6 +10,7 @@ import ReceiveBook from "./components/ReceiveBook.jsx";
 import Footer from "./components/Footer.jsx";
 import Login from "./pages/login.jsx";
 import SignUp from "./pages/signup.jsx";
+import AuthProvider from "./store/authentication.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
         element: (
           <div className="heroSection">
             <center>
-              <h1>Library Management System</h1>
+              <h1 className="newFont">Library Management System</h1>
               <Footer />
             </center>
           </div>
@@ -51,6 +52,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

@@ -16,6 +16,9 @@
 .searchBox {
   outline: none;
 }
+.sidebar {
+  background-color: #212529;
+}
 .forBorder {
   padding: 10px;
   height: 100vh;

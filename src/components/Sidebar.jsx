@@ -1,16 +1,25 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../store/authentication";
+import { auth } from "../firebase";
 
 const Sidebar = () => {
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
+  const handleLogOut = async () => {
+    await logOut();
+    navigate("/mylibrary/login");
+  };
+
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
       style={{ width: "250px", height: "100vh" }}
     >
       <Link
         to="/mylibrary"
         className="mainName d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
-        <h2>My Library</h2>
+        <h2 className="newFont">My Library</h2>
       </Link>
       <hr />
 
@@ -88,6 +97,11 @@ const Sidebar = () => {
       </ul>
 
       <hr />
+
+      <span className="emailtext mb-1">{auth.currentUser.email}</span>
+      <button className="btn btn-secondary" onClick={handleLogOut}>
+        Log Out
+      </button>
     </div>
   );
 };
