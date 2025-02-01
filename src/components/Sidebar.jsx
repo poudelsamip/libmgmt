@@ -9,6 +9,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const handleLogOut = async () => {
     await logOut();
+    localStorage.setItem("isLoggedIn", false);
     navigate("/mylibrary/login");
   };
   let user = localStorage.getItem("user");

@@ -1,7 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Link,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 import AllStudents from "./components/AllStudents.jsx";
 import AllBooks from "./components/AllBooks.jsx";
 import IssueBook from "./components/IssueBook.jsx";
@@ -13,9 +18,20 @@ import AuthProvider from "./store/authentication.jsx";
 import Dashboard from "./components/Dashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
+const redirectionHandler = async () => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  if (isLoggedIn) {
+    return redirect("/mylibrary/dashboard");
+  } else {
+    redirect("/mylibrary");
+  }
+  return null;
+};
+
 const router = createBrowserRouter([
   {
     path: "/mylibrary/",
+    loader: redirectionHandler,
     element: <Hero />,
   },
   {
